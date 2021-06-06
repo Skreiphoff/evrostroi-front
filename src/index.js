@@ -1,12 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import Login from "./components/Auth/Login";
+import Register from "./components/Auth/Register";
+import Home from "./components/Home";
+import Header from "./components/Header";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <Router forceRefresh={true}>
+          <Header/>
+          <Switch>
+              <Route path="/auth/login" component={Login} />
+              <Route path="/auth/reg" component={Register} />
+              <Route exact path="/" component={Home} />
+
+          </Switch>
+      </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
